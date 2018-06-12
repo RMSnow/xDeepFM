@@ -3,22 +3,22 @@ import numpy as np
 import os, time, collections
 import tensorflow as tf
 from IO.iterator import FfmIterator, DinIterator, CCCFNetIterator
-from IO.din_cache import DinCache
+# from IO.din_cache import DinCache
 from IO.ffm_cache import FfmCache
-from IO.cccfnet_cache import CCCFNetCache
-from src.deep_fm import DeepfmModel
-from src.deep_wide import DeepWideModel
-from src.fm import FmModel
-from src.dnn import DnnModel
-from src.opnn import OpnnModel
-from src.ipnn import IpnnModel
-from src.lr import LrModel
-from src.din import DinModel
-from src.cccfnet import CCCFModel
-from src.deepcross import DeepCrossModel
+# from IO.cccfnet_cache import CCCFNetCache
+# from src.deep_fm import DeepfmModel
+# from src.deep_wide import DeepWideModel
+# from src.fm import FmModel
+# from src.dnn import DnnModel
+# from src.opnn import OpnnModel
+# from src.ipnn import IpnnModel
+# from src.lr import LrModel
+# from src.din import DinModel
+# from src.cccfnet import CCCFModel
+# from src.deepcross import DeepCrossModel
 from src.exDeepFM import ExtremeDeepFMModel
 from src.CIN import CINModel
-from src.cross import CrossModel
+# from src.cross import CrossModel
 import utils.util as util
 import utils.metric as metric
 # from utils.log import Log
@@ -107,9 +107,11 @@ def cache_data(hparams, filename, flag):
     if hparams.data_format == 'ffm':
         cache_obj = FfmCache()
     elif hparams.data_format == 'din':
-        cache_obj = DinCache()
+        # cache_obj = DinCache()
+        pass
     elif hparams.data_format == 'cccfnet':
-        cache_obj = CCCFNetCache()
+        # cache_obj = CCCFNetCache()
+        pass
     else:
         raise ValueError(
             "data format must be ffm, din, cccfnet, this format not defined {0}".format(hparams.data_format))
@@ -167,44 +169,44 @@ def train(hparams, scope=None, target_session=""):
         cache_data(hparams, hparams.infer_file, flag='infer')
 
     if hparams.model_type == 'deepFM':
-        model_creator = DeepfmModel
+        # model_creator = DeepfmModel
         print("run deepfm model!")
     elif hparams.model_type == 'deepWide':
-        model_creator = DeepWideModel
+        # model_creator = DeepWideModel
         print("run deepWide model!")
     elif hparams.model_type == 'dnn':
         print("run dnn model!")
-        model_creator = DnnModel
+        # model_creator = DnnModel
     elif hparams.model_type == 'ipnn':
         print("run ipnn model!")
-        model_creator = IpnnModel
+        # model_creator = IpnnModel
     elif hparams.model_type == 'opnn':
         print("run opnn model!")
-        model_creator = OpnnModel
+        # model_creator = OpnnModel
     elif hparams.model_type == 'din':
         print("run din model!")
-        model_creator = DinModel
+        # model_creator = DinModel
     elif hparams.model_type == 'fm':
         print("run fm model!")
-        model_creator = FmModel
+        # model_creator = FmModel
     elif hparams.model_type == 'lr':
         print("run lr model!")
-        model_creator = LrModel
+        # model_creator = LrModel
     elif hparams.model_type == 'din':
         print("run din model!")
-        model_creator = DinModel
+        # model_creator = DinModel
     elif hparams.model_type == 'cccfnet':
         print("run cccfnet model!")
-        model_creator = CCCFModel
+        # model_creator = CCCFModel
     elif hparams.model_type == 'deepcross':
         print("run deepcross model!")
-        model_creator = DeepCrossModel
+        # model_creator = DeepCrossModel
     elif hparams.model_type == 'exDeepFM':
         print("run extreme deepFM model!")
         model_creator = ExtremeDeepFMModel
     elif hparams.model_type == 'cross':
         print("run extreme cross model!")
-        model_creator = CrossModel
+        # model_creator = CrossModel
     elif hparams.model_type == 'CIN':
         print("run extreme cin model!")
         model_creator = CINModel
